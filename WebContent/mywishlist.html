@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SigmaGiftRegistry</title>
+
+<!-- Bootstrap -->
+<link href="styles/bootstrap.min.css" rel="stylesheet">
+<link href="index.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]--> 
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">SigmaGift</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="giftboard.html">Gift Board </a></li>
+					<li><a href="#">Friend Circle </a></li>
+				</ul>
+
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control"
+							placeholder="Fina a Registry by Full Name" style="width: 520px">
+					</div>
+					<button type="submit" class="btn btn-primary">Search</button>
+				</form>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Help</a></li>
+					<li class="dropdown active"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown" role="button"
+						aria-expanded="false">UserName <span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Message</a></li>
+							<li><a href="#">Setting</a></li>
+							<li class="divider"></li>
+							<li><a href="#">LogOut</a></li>
+						</ul></li>
+				</ul>
+
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+	</nav>
+
+	<div class="container" style="margin-top:80px">
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary btn-lg"
+			data-toggle="modal" data-target="#myModal">Launch demo modal
+		</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Create a new Gift</h4>
+					</div>
+					<div class="modal-body">
+					<form role="form">
+  <div class="form-group">
+  	<input type="text" class="form-control" id="giftName" placeholder="Enter GiftName">
+  </div>
+  <div class="form-group">
+    <input type="url" class="form-control" id="giftURL" placeholder="Enter gift URL">
+  </div>
+    <div class="form-group">
+    <input type="url" class="form-control" id="unitPrice" placeholder="Enter gift price">
+  </div>
+    <div class="form-group">
+    <input type="url" class="form-control" id="giftQuantity" placeholder="Enter gift quantity">
+  </div>
+  <div class="form-group">
+ 	<label for="giftImage">Upload your gift image</label>
+    <input type="file" id="giftImage">
+    <p class="help-block">Upload your gift image</p>
+  </div>
+</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-info" data-dismiss="modal">preview</button>
+						<button type="button" class="btn btn-primary"> Submit </button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+	
+	<div class="bs-example">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Gift</th>
+          <th>Desired & Recieved & price</th>
+          <th>Operation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="active">
+          <td><img src="images/1998.jpg" alt="..."></td>
+          <td>1 & 0 & 100$</td>
+          <td><button type="button" class="btn btn-primary">Buy</button></td>
+        </tr>
+        <tr>
+ 		  <td><img src="images/copy.jpg" alt="..."></td>
+          <td>1 & 0 & 100$</td>
+          <td><button type="button" class="btn btn-primary">Buy</button></td>
+        </tr>
+        <tr class="success">
+ 		  <td><img src="images/glasses.jpg" alt="..."></td>
+          <td>1 & 0 & 100$</td>
+          <td><button type="button" class="btn btn-primary">Buy</button></td>
+        </tr>
+        <tr>
+          <td><img src="images/12.png" alt="..."></td>
+          <td>1 & 0 & 100$</td>
+          <td><button type="button" class="btn btn-primary">Buy</button></td>
+        </tr>
+        <tr class="info">
+          <td>2014/12/12</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr>
+          <td>2014/12/12</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2> Gift recieved </h2> 
+  <button type="button" class="btn btn-success">generate thank list</button> 
+  <button type="button" class="btn btn-success">mark as purchased</button>
+  	<div class="recieved">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Gift</th>
+          <th>revieved date</th>
+          <th>who give to you</th>
+        </tr>
+        <tr class="info">
+          <td> <input type="checkbox">  <img src="images/14.png" alt="..."></td>
+          <td>2014/12/12</td>
+          <td>pyqt</td>
+        </tr>
+        <tr>
+          <td> <input type="checkbox"> <img src="images/13.png" alt="..."></td>
+          <td>2014/12/12</td>
+          <td>whs</td>
+        </tr>
+        
+      </thead>
+      <tbody>
+      </tbody>
+      </table>
+      </div>
+      
+  
+	</div>
+
+	<footer class="footer" style="margin-top: 30px; text-align: center">
+		<div class="container">
+			<p class="text-muted">© Copyright 2014 All rights reserved -
+				SigmaTeam</p>
+		</div>
+	</footer>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+		$('.carousel').carousel({
+			interval : 3000
+		})
+	</script>
+</body>
+</html>
