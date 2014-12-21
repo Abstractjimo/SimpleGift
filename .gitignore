@@ -1,3 +1,4 @@
+/resources/
 *.class
 .classpath
 /src/AwsCredentials.properties
