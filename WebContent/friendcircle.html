@@ -7,8 +7,8 @@
 <title>SigmaGiftRegistry</title>
 
 <!-- Bootstrap -->
-<link href="styles/bootstrap.min.css" rel="stylesheet">
-<link href="index.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/timeline.css" rel="stylesheet">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -27,7 +27,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html">SigmaGift</a>
+				<a class="navbar-brand" href="index.html">SimpleGift</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -42,7 +42,7 @@
 				<form class="navbar-form navbar-left" role="search">
 					<div class="form-group">
 						<input type="text" class="form-control"
-							placeholder="Fina a Registry by Full Name" style="width: 520px">
+							placeholder="Find a Registry by Full Name" style="width: 520px">
 					</div>
 					<button type="submit" class="btn btn-primary">Search</button>
 				</form>
@@ -67,40 +67,199 @@
 	</nav>
 
 	<div class="container" style="margin-top: 80px">
-		<div class="friends gift status">
-			<p class="bg-primary">...friend one add a new gift</p>
-			<p class="bg-success">...friend b received a new gift</p>
-			<p class="bg-info">...friend c send you a thanks message</p>
-			<p class="bg-warning">...some others</p>
-			<p class="bg-danger">...I don't know</p>
-		</div>
+		<div class="row clearfix">
+			<div class="tabbable" id="tabs">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#section1" data-toggle="tab">Friends
+							Status </a></li>
+					<li><a href="#section2" data-toggle="tab">Friends</a></li>
+				</ul>
 
-		<h2>your friend list</h2>
-		<button type="button" class="btn btn-success">Synchronize</button>
-		<div class="all your firends list" style="margin-top: 40px">
-			<div class="col-sm-4 col-md-1">
-				<div class="thumbnail">
-					<img src="images/1998.jpg" data-src="holder.js/300x300" alt="...">
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-1">
-				<div class="thumbnail">
-					<a href="mywishlist.html"><img src="images/1998.jpg" data-src="holder.js/300x300" alt="..."></a>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-1">
-				<div class="thumbnail">
-					<img src="images/1998.jpg" data-src="holder.js/300x300" alt="...">
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-1">
-				<div class="thumbnail">
-					<img src="images/1998.jpg" data-src="holder.js/300x300" alt="...">
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-1">
-				<div class="thumbnail">
-					<img src="images/1998.jpg" data-src="holder.js/300x300" alt="...">
+				<div class="tab-content">
+					<div class="tab-pane active" id="section1">
+
+						<ul class="timeline">
+							<li>
+								<div class="timeline-badge">
+									<i class="glyphicon glyphicon-check"></i>
+								</div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title">Yongqing</h4>
+										<p>
+											<small class="text-muted"><i
+												class="glyphicon glyphicon-time"></i> 2014/12/22</small>
+										</p>
+									</div>
+									<div class="timeline-body">
+										<p><a>buy</a> a gift</p>
+										<img src="img/1998.jpg" data-src="holder.js/300x300" alt="...">
+										<p>
+											<a href="#" class="btn btn-info" role="button">View</a> 
+											<a href="#" class="btn btn-danger" role="button">Like</a>
+										</p>
+									</div>
+								</div>
+							</li>
+							<li class="timeline-inverted">
+								<div class="timeline-badge warning">
+									<i class="glyphicon glyphicon-credit-card"></i>
+								</div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title">Dengdeng</h4>
+										<p>
+											<small class="text-muted"><i class="glyphicon glyphicon-time"></i> 2014/12/22</small>
+										</p>
+									</div>
+									<div class="timeline-body">
+										<p><a>buy</a> a gift</p>
+										<img src="img/glasses.jpg" data-src="holder.js/300x300" alt="...">
+										<p>
+										<a href="#" class="btn btn-info" role="button">View</a> 
+										<a href="#" class="btn btn-danger" role="button">Like</a>
+										</p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="timeline-badge danger">
+									<i class="glyphicon glyphicon-credit-card"></i>
+								</div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title">Mussum ipsum cacilds</h4>
+									</div>
+									<div class="timeline-body">
+										add a gift
+									</div>
+								</div>
+							</li>
+							<li class="timeline-inverted">
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title">Mussum ipsum cacilds</h4>
+									</div>
+									<div class="timeline-body">
+										<p>buy a gift</p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="timeline-badge info">
+									<i class="glyphicon glyphicon-floppy-disk"></i>
+								</div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title">Mussum ipsum cacilds</h4>
+									</div>
+									<div class="timeline-body">
+										<p>buy a gift</p>
+										<hr>
+										<div class="btn-group">
+											<button type="button"
+												class="btn btn-primary btn-sm dropdown-toggle"
+												data-toggle="dropdown">
+												<i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">Action</a></li>
+												<li><a href="#">Another action</a></li>
+												<li><a href="#">Something else here</a></li>
+												<li class="divider"></li>
+												<li><a href="#">Separated link</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title">Mussum ipsum cacilds</h4>
+									</div>
+									<div class="timeline-body">
+										<p>remove a gift</p>
+									</div>
+								</div>
+							</li>
+							<li class="timeline-inverted">
+								<div class="timeline-badge success">
+									<i class="glyphicon glyphicon-thumbs-up"></i>
+								</div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title">Mussum ipsum cacilds</h4>
+									</div>
+									<div class="timeline-body">
+										<p>like a gift</p>
+										<img src="img/1998.jpg" data-src="holder.js/300x300" alt="...">
+									</div>
+								</div>
+							</li>
+						</ul>
+
+					</div>
+					<div class="tab-pane" id="section2">
+					
+						<button type="button" class="btn btn-success">Synchronize</button>
+						<div class="row">
+							<h2>Friends List</h2>
+							<div class="col-md-6">
+								<div class="blockquote-box clearfix">
+									<div class="square pull-left">
+										<img src="http://placehold.it/60/8e44ad/FFF&text=B" alt=""
+											class="" />
+									</div>
+									<h4>Yongqing Peng</h4>
+									<p>personal page: <a> www.123.com </a></p>
+									<p>email: <a> pyq@126.com </a></p>
+								</div>
+								<div class="blockquote-box blockquote-primary clearfix">
+									<div class="square pull-left">
+										<span class="glyphicon glyphicon-music glyphicon-lg"></span>
+									</div>
+									<h4>Huansong Wang</h4>
+									<p>personal page: <a> www.whs.com </a></p>
+									<p>email: <a> hm123@nyu.com </a></p>
+								</div>
+								<div class="blockquote-box blockquote-success clearfix">
+									<div class="square pull-left">
+										<span class="glyphicon glyphicon-tree-conifer glyphicon-lg"></span>
+									</div>
+									<h4>Xiaohuanxiong</h4>
+									<p>personal page: <a> www.facebook.com </a></p>
+									<p>email: <a> hm123@nyu.com </a></p>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="blockquote-box blockquote-info clearfix">
+									<div class="square pull-left">
+										<span class="glyphicon glyphicon-info-sign glyphicon-lg"></span>
+									</div>
+									<h4>YiYi</h4>
+									<p>personal page: <a> www.facebook.com </a></p>
+									<p>email: <a> hm123@nyu.com </a></p>
+								</div>
+								<div class="blockquote-box blockquote-warning clearfix">
+									<div class="square pull-left">
+										<span class="glyphicon glyphicon-warning-sign glyphicon-lg"></span>
+									</div>
+									<h4>erer</h4>
+									<p>personal page: <a> www.facebook.com </a></p>
+									<p>email: <a> hm123@nyu.com </a></p>
+								</div>
+								<div class="blockquote-box blockquote-danger clearfix">
+									<div class="square pull-left">
+										<span class="glyphicon glyphicon-record glyphicon-lg"></span>
+									</div>
+									<h4>heihei</h4>
+									<p>personal page: <a> www.facebook.com </a></p>
+									<p>email: <a> hm123@nyu.com </a></p>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
