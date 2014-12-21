@@ -16,6 +16,7 @@ public class Gift {
 	private String category;
 	private int userId;
 	private int privacy;
+	private String giftImgURL;
 	///////////////////////static
 	public static int PRIORITY_VERY_HIGH = 0;
 	public static int PRIORITY_HIGH = 1;
@@ -94,6 +95,12 @@ public class Gift {
 	}
 	public void setPrivacy(int privacy) {
 		this.privacy = privacy;
+	}
+	public String getGiftImgURL() {
+		return giftImgURL;
+	}
+	public void setGiftImgURL(String giftImgURL) {
+		this.giftImgURL = giftImgURL;
 	}
 	
 	
