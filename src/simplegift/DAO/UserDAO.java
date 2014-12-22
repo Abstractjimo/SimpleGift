@@ -41,7 +41,7 @@ public static void addUser(User user){
 		
 	}
 
-	public static User getUsers(int id){
+	public static User getUser(int id){
 		Connection conn = null;
 		try {
 			conn = DBController.getDBConnection();
@@ -52,6 +52,39 @@ public static void addUser(User user){
 				user.setUserId(id);
 				user.setPassword(rs.getString("password"));
 				user.setUserEmail(rs.getString("loginEmail"));
+				user.setUserName(rs.getString("userName"));
+				user.setUserImgURL(rs.getString("userImgURL"));
+				return user;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			try {
+				if (conn != null){
+					conn.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
+	public static User getUserByEmail(String email){
+		Connection conn = null;
+		try {
+			conn = DBController.getDBConnection();
+			String sql = "call SELECT_User_By_Email(?)";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, email);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()){
+				User user = new User();
+				user.setUserId(rs.getInt("userId"));
+				user.setPassword(rs.getString("password"));
+				user.setUserEmail(email);
 				user.setUserName(rs.getString("userName"));
 				user.setUserImgURL(rs.getString("userImgURL"));
 				return user;

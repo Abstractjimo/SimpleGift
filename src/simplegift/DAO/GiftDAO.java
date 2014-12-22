@@ -13,7 +13,7 @@ import simplegift.model.Gift;
 
 public class GiftDAO {
 	
-public static void addGift(Gift gift){
+public static int addGift(Gift gift){
 		
 		Connection conn = null;
 		try {
@@ -31,7 +31,7 @@ public static void addGift(Gift gift){
 			stmt.setInt(10, gift.getUserId());
 			stmt.setInt(11, gift.getPrivacy());
 			stmt.setString(12, gift.getGiftImgURL());
-			System.out.println(stmt.executeUpdate());
+			return stmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -45,6 +45,7 @@ public static void addGift(Gift gift){
 				e.printStackTrace();
 			}
 		}
+		return -1;
 		
 	}
 

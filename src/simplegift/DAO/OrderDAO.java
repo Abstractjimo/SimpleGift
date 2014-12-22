@@ -11,17 +11,18 @@ import simplegift.model.Order;
 
 public class OrderDAO {
 
-	public static void addOrder(Order order) {
+	public static int addOrder(Order order) {
 
 		Connection conn = null;
 		try {
 			conn = DBController.getDBConnection();
 			PreparedStatement stmt = conn
-					.prepareStatement("call INSERT_Order(?,?,?)");
+					.prepareStatement("call INSERT_Order(?,?,?,?)");
 			stmt.setString(1, order.getOrderNumber());
 			stmt.setInt(2, order.getContactId());
 			stmt.setInt(3, order.getGiftId());
-			System.out.println(stmt.executeUpdate());
+			stmt.setInt(4, order.getQuantity());
+			return stmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,7 +36,7 @@ public class OrderDAO {
 				e.printStackTrace();
 			}
 		}
-
+		return -1;
 	}
 
 	public static Order getOrder(int id) {
@@ -50,6 +51,7 @@ public class OrderDAO {
 				order.setOrderNumber(rs.getString("orderNumber"));;
 				order.setContactId(rs.getInt("contactId"));
 				order.setGiftId(rs.getInt("giftId"));
+				order.setQuantity(rs.getInt("quantity"));
 				return order;
 			}
 		} catch (SQLException e) {

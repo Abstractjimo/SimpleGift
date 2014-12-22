@@ -49,8 +49,24 @@
 			</form>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Help</a></li>
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
+				<%
+				if (session.getAttribute("userName") != null){
+					%>
+					 <li class="dropdown">
+				<a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-expanded="false"><%=session.getAttribute("userName").toString()%><span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="/SimpleGift/mywishlist.jsp">My Wishlist</a></li>
+						<li class="divider"></li>
+						<li><a href="/SimpleGift/logout_callback.jsp">Logout</a></li>
+					</ul>
+				</li>
+					<%
+				} else {
+					%>
+					<li class="dropdown">
+				<a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-expanded="false">Sign
 						In <span class="caret"></span>
 				</a>
@@ -59,7 +75,11 @@
 						<li><a href="#">Log in with FaceBook</a></li>
 						<li class="divider"></li>
 						<li><a href="#">Sign Up</a></li>
-					</ul></li>
+					</ul>
+				</li>
+					<%
+				}
+				%>
 			</ul>
 
 		</div>

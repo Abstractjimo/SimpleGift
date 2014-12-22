@@ -6,6 +6,7 @@ public class Order {
 	private String orderNumber;
 	private int contactId;
 	private int giftId;
+	private int quantity;
 	
 	public int getOrderId() {
 		return orderId;
@@ -31,6 +32,11 @@ public class Order {
 	public void setGiftId(int giftId) {
 		this.giftId = giftId;
 	}
-	
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	
 }
