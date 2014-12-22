@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=US-ASCII"
+    pageEncoding="US-ASCII"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SigmaGiftRegistry</title>
+<title>SigmaGift</title>
 
 <!-- Bootstrap -->
 <link href="styles/bootstrap.min.css" rel="stylesheet">
-<link href="index.css" rel="stylesheet">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -17,9 +18,7 @@
     <![endif]-->
     
 <style>
-
 .jumbotron {
-  color: white;
   text-shadow: #444 0 1px 1px;
   text-align: center;
   background: url('images/jumbotron.jpeg') no-repeat;
@@ -34,54 +33,7 @@
 </style>
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> 
-					<span class="icon-bar"></span> 
-					<span class="icon-bar"></span> 
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.html">SimpleGift</a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="giftboard.html">Gift Board </a></li>
-					<li><a href="friendcircle.html">Friend Circle </a></li>
-				</ul>
-
-				<form class="navbar-form navbar-left" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Find a Registry by Full Name" style="width:520px">
-					</div>
-					<button type="submit" class="btn btn-primary">Search</button>
-				</form>
-				
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Help</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-expanded="false">Sign In
-							<span class="caret"></span>
-					</a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="login.html">Log in with Email</a></li>
-							<li><a href="#">Log in with FaceBook</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Sign Up</a></li>
-						</ul></li>
-				</ul>
-
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-	</nav>
-	
+<jsp:include page="navigation.jsp" />
 	<div class="container">
 		<!-- jumbotron  -->
 		<div class="bg"></div>
@@ -107,19 +59,19 @@
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner">
 				<div class="item active">
-					<img class="mycarouselimage" src="images/pinkgift.jpg" alt="first image">
+					<img class="mycarouselimage" src="images/pinkgift.png" alt="first image">
 					<div class="carousel-caption">
 						<h2>Add any gifts you want</h2>
 					</div>
 				</div>
 				<div class="item">
-					<img class="mycarouselimage" src="images/whitewallgift.jpg" alt="second image">
+					<img class="mycarouselimage" src="images/whitewallgift.png" alt="second image">
 					<div class="carousel-caption">
 						<h2>Get inspired from others' ideas</h2>
 					</div>
 				</div>
 				<div class="item">
-					<img class="mycarouselimage" src="images/happygift.jpg" alt="third image">
+					<img class="mycarouselimage" src="images/happygift.png" alt="third image">
 					<div class="carousel-caption">
 						<h2>Use very easy</h2>
 					</div>
@@ -137,13 +89,7 @@
 		</div>
 		<!-- Carousel -->
 	</div>
-	
-	<footer class="footer" style="margin-top:30px; text-align: center">
-      <div class="container">
-        <p class="text-muted">© Copyright 2014 All rights reserved - SigmaTeam</p>
-      </div>
-    </footer>
-	
+	<jsp:include page="footer.jsp" />
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
