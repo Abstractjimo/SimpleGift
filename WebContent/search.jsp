@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
+<%@ page import= "java.util.List, simplegift.model.ContactInfo, simplegift.controller.*" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,6 +46,12 @@
 <body>
 <jsp:include page="navigation.jsp" />
 <div class="container" style="margin-top: 80px">
+	<%  
+		String keyword = request.getParameter("keyword");
+		List<ContactInfo> result = ContactInfoController.getContactInfoByKeyword(keyword);
+		System.out.println(result.get(0).getContactName());
+		System.out.println(result.size());
+	%>
     <h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>
     	<div class="row">
 				<div class="panel panel-primary">
@@ -70,30 +77,18 @@
 							</tr>
 						</thead>
 						<tbody>
+						
+							<%for(int i = 0; i < result.size(); ++i) {
+								ContactInfo cInfo = result.get(i);
+							%>
 							<tr>
-								<td>Kilgore</td>
-								<td>1823 w6, Brooklyn, NewYork</td>
-								<td>kkkk@nyu.edu</td>
-								<td><a href="#">mysigma.nuy.com</a></td>
+								<td><%=cInfo.getContactName() %></td>
+								<td><%=cInfo.getAddress() %></td>
+								<td><%=cInfo.getEmail()%></td>
+								<td><a href="myregistry.jsp?userId=<%=cInfo.getUserId()%>"> Go </a></td>
 							</tr>
-							<tr>
-								<td>Bob</td>
-								<td>1111 5th avenue, Manhattan, NewYork </td>
-								<td>BobBobBob@Bob.com</td>
-								<td><a href="#">Bob.mywish.com</a></td>
-							</tr>
-							<tr>
-								<td>Holden</td>
-								<td>098 5th avenue, city, Miami</td>
-								<td>qwe123@123.com</td>
-								<td><a href="#">www.google.com</a></td>
-							</tr>
-							<tr>
-								<td>Song Ge</td>
-								<td>098 5th avenue, city, Miami</td>
-								<td>qwe123@123.com</td>
-								<td><a href="#">www.facebook.com</a></td>
-							</tr>
+							<%}%>
+							
 						</tbody>
 					</table>
 				</div>

@@ -240,56 +240,10 @@
 										<p class="help-block">Upload your gift image</p>
 									</div>
 									<div class="modal-footer">
-										<input type="button" class="btn btn-info" value="cancel"></input>
-										<input type="submit" class="btn btn-primary"></input>
+										<input type="button" class="btn btn-info" value="Cancel"></input>
+										<input type="submit" class="btn btn-primary" value="Submit"></input>
 									</div>
 								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="dropdown2" class="tab-pane fade">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal">
-									<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-								</button>
-								<h4 class="modal-title" id="myModalLabel">Create a Cash
-									Gift</h4>
-							</div>
-							<div class="modal-body">
-								<form role="form" method="POST" action="/SimpleGift/addgift_callback.jsp">
-									<div class="form-group">
-										<input type="text" class="form-control" id="giftName"
-											placeholder="Enter GiftName">
-									</div>
-									<div class="form-group">
-										<input type="text" class="form-control" id="storeURL"
-											placeholder="Enter gift URL">
-									</div>
-									<div class="form-group">
-										<input type="text" class="form-control" id="price"
-											placeholder="Enter gift unit price">
-									</div>
-									<div class="form-group">
-										<input type="text" class="form-control" id="desired"
-											placeholder="Enter gift quantity">
-									</div>
-									<div class="form-group">
-										<input type="text" class="form-control" id="description"
-											placeholder="Enter gift description">
-									</div>
-									<div class="form-group">
-										<label for="giftImage">Upload your gift image</label> <input
-											type="file" id="giftImage">
-										<p class="help-block">Upload your gift image</p>
-									</div>
-								</form>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-								<button type="button" class="btn btn-primary">Submit</button>
 							</div>
 						</div>
 					</div>

@@ -133,9 +133,9 @@ public class ContacfInfoDAO {
 		try {
 			conn=  DBController.getDBConnection();
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM SimpleGift.ContactInfo where contactName like \"%"+keyword+"%\"");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM SimpleGift.ContactInfo where contactName like '%"+keyword+"%'");
 			List<ContactInfo> list = new ArrayList<ContactInfo>();
-			if (rs.next()){
+			while (rs.next()){
 				ContactInfo cinfo = new ContactInfo();
 				cinfo.setAddress(rs.getString("address"));
 				cinfo.setContactId(rs.getInt("contactId"));
