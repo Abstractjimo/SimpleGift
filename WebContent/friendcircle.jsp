@@ -219,7 +219,7 @@ color: red;
 									<div class="square pull-left">
 										<span class="glyphicon glyphicon-tree-conifer glyphicon-lg"></span>
 									</div>
-									<h4>Xiaohuanxiong</h4>
+									<h4>Mussum ipsum cacilds</h4>
 									<p>personal page: <a> www.facebook.com </a></p>
 									<p>email: <a> dahaha@yahoo.com </a></p>
 								</div>
@@ -229,7 +229,7 @@ color: red;
 									<div class="square pull-left">
 										<span class="glyphicon glyphicon-info-sign glyphicon-lg"></span>
 									</div>
-									<h4>YiYi</h4>
+									<h4>Mussum Sahu</h4>
 									<p>personal page: <a> www.yiyier.me </a></p>
 									<p>email: <a> appledzzz@gmail.com </a></p>
 								</div>
@@ -245,7 +245,7 @@ color: red;
 									<div class="square pull-left">
 										<span class="glyphicon glyphicon-record glyphicon-lg"></span>
 									</div>
-									<h4>Heihei</h4>
+									<h4>Lebron James</h4>
 									<p>personal page: <a> www.iamheihei.com </a></p>
 									<p>email: <a> hheiei@gmail.com </a></p>
 								</div>
