@@ -17,10 +17,21 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+<style>
+.timeline-body img{
+	max-width:300px;
+}
+.timeline-body h4{
+color: red;
+}
+</style>
+
 </head>
 <body>
 	<jsp:include page="navigation.jsp" />
 
+
+	<!-- Not done yet -->
 	<div class="container" style="margin-top: 80px">
 		<div class="row clearfix">
 			<div class="tabbable" id="tabs">
@@ -43,16 +54,26 @@
 										<h4 class="timeline-title">Yongqing</h4>
 										<p>
 											<small class="text-muted"><i
-												class="glyphicon glyphicon-time"></i> 2014/12/22</small>
+												class="glyphicon glyphicon-time"></i>   2014/12/22</small>
 										</p>
 									</div>
 									<div class="timeline-body">
-										<p><a>buy</a> a gift</p>
-										<img src="images/1998.jpg" data-src="holder.js/300x300" alt="...">
-										<p>
-											<a href="#" class="btn btn-info" role="button">View</a> 
-											<a href="#" class="btn btn-danger" role="button">Like</a>
-										</p>
+										<div class="col-md-8">
+											<img src="images/Tv.png" alt="tv image">
+											<p>
+												<a href="#" class="btn btn-info" role="button" onclick="openWin1()" >View</a> 
+												<a href="#" class="btn btn-danger" role="button">Like</a>
+											</p>
+
+										</div>
+										<div class="col-md-4">
+												<h4>Buy a gift</h4>
+											<ul class="list-group">
+												<li class="list-group-item">Amazon Fire TV</li>
+												<li class="list-group-item">price: 120</li>
+												<li class="list-group-item">quantity: 1</li>
+											</ul>
+										</div>
 									</div>
 								</div>
 							</li>
@@ -62,18 +83,28 @@
 								</div>
 								<div class="timeline-panel">
 									<div class="timeline-heading">
-										<h4 class="timeline-title">Dengdeng</h4>
+										<h4 class="timeline-title">Huansong Wang</h4>
 										<p>
-											<small class="text-muted"><i class="glyphicon glyphicon-time"></i> 2014/12/22</small>
+											<small class="text-muted"><i class="glyphicon glyphicon-time"></i> 2014/12/21</small>
 										</p>
 									</div>
 									<div class="timeline-body">
-										<p><a>buy</a> a gift</p>
-										<img src="images/glasses.jpg" data-src="holder.js/300x300" alt="...">
-										<p>
-										<a href="#" class="btn btn-info" role="button">View</a> 
-										<a href="#" class="btn btn-danger" role="button">Like</a>
-										</p>
+										<div class="col-md-4">
+											<h4>Add a gift</h4>
+											<ul class="list-group">
+												<li class="list-group-item">Air Jordan 4Lab1</li>
+												<li class="list-group-item">price: 185</li>
+												<li class="list-group-item">quantity: 1</li>
+											</ul>
+										</div>
+										<div class="col-md-8">
+											<img src="images/shoe.png" alt="product image">
+											<p>
+												<a href="#" class="btn btn-info" role="button" onclick="openWin2()">View</a> 
+												<a href="#" class="btn btn-danger" role="button">Like</a>
+											</p>
+
+										</div>
 									</div>
 								</div>
 							</li>
@@ -83,20 +114,50 @@
 								</div>
 								<div class="timeline-panel">
 									<div class="timeline-heading">
-										<h4 class="timeline-title">Mussum ipsum cacilds</h4>
+										<h4 class="timeline-title">Mussum Sahu</h4>
 									</div>
 									<div class="timeline-body">
-										add a gift
+										<div class="col-md-8">
+											<img src="images/Hair Dryer.png" alt="tv image">
+											<p>
+												<a href="http://shop.panasonic.com/shop/model/EH-NA65-K?cm_mmc=AffiliateDefault-_-Ecommerce-_-Default-_-Default" class="btn btn-info" role="button">View</a> 
+												<a href="#" class="btn btn-danger" role="button">Like</a>
+											</p>
+
+										</div>
+										<div class="col-md-4">
+												<h4>Recieved a gift</h4>
+											<ul class="list-group">
+												<li class="list-group-item">Hair Dryer</li>
+												<li class="list-group-item">price: 179.99</li>
+												<li class="list-group-item">quantity: 2</li>
+											</ul>
+										</div>
 									</div>
 								</div>
 							</li>
 							<li class="timeline-inverted">
 								<div class="timeline-panel">
 									<div class="timeline-heading">
-										<h4 class="timeline-title">Mussum ipsum cacilds</h4>
+										<h4 class="timeline-title">Lebron James</h4>
 									</div>
 									<div class="timeline-body">
-										<p>buy a gift</p>
+										<div class="col-md-4">
+											<h4>like a gift</h4>
+											<ul class="list-group">
+												<li class="list-group-item">Air Jordan 4Lab1</li>
+												<li class="list-group-item">price: 185</li>
+												<li class="list-group-item">quantity: 1</li>
+											</ul>
+										</div>
+										<div class="col-md-8">
+											<img src="images/shoe.png" alt="product image">
+											<p>
+												<a href="#" class="btn btn-info" role="button" onclick="openWin2()">View</a> 
+												<a href="#" class="btn btn-danger" role="button">Like</a>
+											</p>
+
+										</div>
 									</div>
 								</div>
 							</li>
@@ -109,46 +170,22 @@
 										<h4 class="timeline-title">Mussum ipsum cacilds</h4>
 									</div>
 									<div class="timeline-body">
-										<p>buy a gift</p>
-										<hr>
-										<div class="btn-group">
-											<button type="button"
-												class="btn btn-primary btn-sm dropdown-toggle"
-												data-toggle="dropdown">
-												<i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
-											</button>
-											<ul class="dropdown-menu" role="menu">
-												<li><a href="#">Action</a></li>
-												<li><a href="#">Another action</a></li>
-												<li><a href="#">Something else here</a></li>
-												<li class="divider"></li>
-												<li><a href="#">Separated link</a></li>
+										<div class="col-md-8">
+											<img src="images/Tv.png" alt="tv image">
+											<p>
+												<a href="#" class="btn btn-info" role="button" onclick="openWin1()">View</a> 
+												<a href="#" class="btn btn-danger" role="button">Like</a>
+											</p>
+
+										</div>
+										<div class="col-md-4">
+												<h4>Recieved a gift</h4>
+											<ul class="list-group">
+												<li class="list-group-item">Amazon Fire TV</li>
+												<li class="list-group-item">price: 120</li>
+												<li class="list-group-item">quantity: 1</li>
 											</ul>
 										</div>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h4 class="timeline-title">Mussum ipsum cacilds</h4>
-									</div>
-									<div class="timeline-body">
-										<p>remove a gift</p>
-									</div>
-								</div>
-							</li>
-							<li class="timeline-inverted">
-								<div class="timeline-badge success">
-									<i class="glyphicon glyphicon-thumbs-up"></i>
-								</div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h4 class="timeline-title">Mussum ipsum cacilds</h4>
-									</div>
-									<div class="timeline-body">
-										<p>like a gift</p>
-										<img src="img/1998.jpg" data-src="holder.js/300x300" alt="...">
 									</div>
 								</div>
 							</li>
@@ -184,7 +221,7 @@
 									</div>
 									<h4>Xiaohuanxiong</h4>
 									<p>personal page: <a> www.facebook.com </a></p>
-									<p>email: <a> hm123@nyu.com </a></p>
+									<p>email: <a> dahaha@yahoo.com </a></p>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -193,24 +230,24 @@
 										<span class="glyphicon glyphicon-info-sign glyphicon-lg"></span>
 									</div>
 									<h4>YiYi</h4>
-									<p>personal page: <a> www.facebook.com </a></p>
-									<p>email: <a> hm123@nyu.com </a></p>
+									<p>personal page: <a> www.yiyier.me </a></p>
+									<p>email: <a> appledzzz@gmail.com </a></p>
 								</div>
 								<div class="blockquote-box blockquote-warning clearfix">
 									<div class="square pull-left">
 										<span class="glyphicon glyphicon-warning-sign glyphicon-lg"></span>
 									</div>
-									<h4>erer</h4>
-									<p>personal page: <a> www.facebook.com </a></p>
-									<p>email: <a> hm123@nyu.com </a></p>
+									<h4>Hengheng Hahei</h4>
+									<p>personal page: <a> www.hahei.com </a></p>
+									<p>email: <a> hhhh@126.com </a></p>
 								</div>
 								<div class="blockquote-box blockquote-danger clearfix">
 									<div class="square pull-left">
 										<span class="glyphicon glyphicon-record glyphicon-lg"></span>
 									</div>
-									<h4>heihei</h4>
-									<p>personal page: <a> www.facebook.com </a></p>
-									<p>email: <a> hm123@nyu.com </a></p>
+									<h4>Heihei</h4>
+									<p>personal page: <a> www.iamheihei.com </a></p>
+									<p>email: <a> hheiei@gmail.com </a></p>
 								</div>
 							</div>
 						</div>
@@ -227,5 +264,16 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.min.js"></script>
+	
+	 <script>
+	 function openWin1()
+	{
+	 	var myWindow = window.open("http://www.amazon.com/dp/B00CX5P8FC?_encoding=UTF8&showFS=1","name","width=1400,height=800");
+	}
+	function openWin2()
+	{
+		 var myWindow = window.open("http://store.nike.com/us/en_us/pd/air-jordan-4lab1-shoe/pid-10276838/pgid-10284817","name","width=1400,height=800");
+	}
+	</script>
 </body>
 </html>
