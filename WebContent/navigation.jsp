@@ -43,7 +43,7 @@
 			<form class="navbar-form navbar-left" role="search" method="GET" action="search.jsp">
 				<div class="form-group">
 					<input type="text" name ="keyword"  class="form-control"
-						placeholder="Find a Registry by Full Name" style="width: 520px">
+						placeholder="Find a Registry by Full Name" style="width: 520px" required/>
 				</div>
 				<button type="submit" class="btn btn-primary">Search</button>
 			</form>

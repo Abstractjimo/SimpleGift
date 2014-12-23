@@ -1,6 +1,7 @@
 package simplegift.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import simplegift.DAO.ContacfInfoDAO;
@@ -19,6 +20,9 @@ public class ContactInfoController {
 	}
 	
 	public static List<ContactInfo> getContactInfoByKeyword(String keyword) {
+		if(keyword == null || keyword.length() == 0) {
+			return new ArrayList<ContactInfo>();
+		}
 		return ContacfInfoDAO.getContactInfoByKeyword(keyword);
 	}
 }
