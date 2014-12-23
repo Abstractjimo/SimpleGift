@@ -39,8 +39,8 @@
     <div class="item" style="width:222px">
         <img src="{{image}}" width="{{width}}" height="{{height}}" />
 		<div class="caption">
-				<h3>Gift name</h3>
-				<p>.this is a food gift you can buy it at some store..</p>
+				<h3>{{giftName}}</h3>
+				<p>{{description}}</p>
 				<p><a href="#" class="btn btn-info" role="button">View</a> <a href="#" class="btn btn-danger" role="button">Like</a>
 				</p>
 		</div>

@@ -36,7 +36,7 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="giftboard.jsp">Gift Board </a></li>
+				<li><a href="giftfetch.jsp">Gift Board </a></li>
 				<li><a href="friendcircle.jsp">Friend Circle </a></li>
 			</ul>
 

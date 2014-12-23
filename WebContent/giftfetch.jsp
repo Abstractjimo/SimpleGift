@@ -9,7 +9,8 @@ if (gifts != null){%>
 	<%
 	for (Gift gift : gifts){
 		%>
-		json.result.push({"image" : '<%=gift.getGiftImgURL()%>' , "width":192});
+		var g = {"image":'<%=gift.getGiftImgURL()%>',"width":192,"giftName":'<%=gift.getGiftName()%>',"description":'<%=gift.getDescription()%>'};
+		json.result.push(g);
 	<%}%>
 <%}
 %>
