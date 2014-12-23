@@ -1,6 +1,6 @@
 package simplegift.controller;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import simplegift.DAO.GiftDAO;
@@ -10,7 +10,8 @@ public class GiftController {
 
 	public static Gift addGift(String giftName, int desired, double price, String storeURL, 
 			String description, int priority, String category, int userId, int privacy, String giftImgURL){
-		Date date = new Date(new java.util.Date().getTime());
+		java.util.Date currentTime = new java.util.Date();
+		Timestamp date = new Timestamp(currentTime.getTime());
 		Gift gift = new Gift();
 		gift.setCategory(category);
 		gift.setDescription(description);

@@ -27,7 +27,7 @@ public static int addGift(Gift gift){
 			stmt.setDouble(4, gift.getPrice());
 			stmt.setString(5, gift.getStoreURL());
 			stmt.setString(6, gift.getDescription());
-			stmt.setDate(7, gift.getPosttime());
+			stmt.setTimestamp(7, gift.getPosttime());
 			stmt.setInt(8, gift.getPriority());
 			stmt.setString(9, gift.getCategory());
 			stmt.setInt(10, gift.getUserId());
@@ -70,7 +70,7 @@ public static int addGift(Gift gift){
 				gift.setPrice(rs.getDouble("price"));
 				gift.setStoreURL(rs.getString("storeURL"));
 				gift.setDescription(rs.getString("description"));
-				gift.setPosttime(rs.getDate("posttime"));
+				gift.setPosttime(rs.getTimestamp("posttime"));
 				gift.setPriority(rs.getInt("priority"));
 				gift.setCategory(rs.getString("category"));
 				gift.setUserId(rs.getInt("userId"));
@@ -110,7 +110,7 @@ public static int addGift(Gift gift){
 				gift.setPrice(rs.getDouble("price"));
 				gift.setStoreURL(rs.getString("storeURL"));
 				gift.setDescription(rs.getString("description"));
-				gift.setPosttime(rs.getDate("posttime"));
+				gift.setPosttime(rs.getTimestamp("posttime"));
 				gift.setPriority(rs.getInt("priority"));
 				gift.setCategory(rs.getString("category"));
 				gift.setUserId(rs.getInt("userId"));
@@ -147,7 +147,7 @@ public static int addGift(Gift gift){
 			stmt.setDouble(5, gift.getPrice());
 			stmt.setString(6, gift.getStoreURL());
 			stmt.setString(7, gift.getDescription());
-			stmt.setDate(8, gift.getPosttime());
+			stmt.setTimestamp(8, gift.getPosttime());
 			stmt.setInt(9, gift.getPriority());
 			stmt.setString(10, gift.getCategory());
 			stmt.setInt(11, gift.getUserId());
@@ -186,7 +186,7 @@ public static int addGift(Gift gift){
 				gift.setPrice(rs.getDouble("price"));
 				gift.setStoreURL(rs.getString("storeURL"));
 				gift.setDescription(rs.getString("description"));
-				gift.setPosttime(rs.getDate("posttime"));
+				gift.setPosttime(rs.getTimestamp("posttime"));
 				gift.setPriority(rs.getInt("priority"));
 				gift.setCategory(rs.getString("category"));
 				gift.setUserId(rs.getInt("userId"));

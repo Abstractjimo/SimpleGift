@@ -1,6 +1,6 @@
 package simplegift.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Gift {
 
@@ -11,7 +11,7 @@ public class Gift {
 	private double price;
 	private String storeURL;
 	private String description;
-	private Date posttime;
+	private Timestamp posttime;
 	private int priority;
 	private String category;
 	private int userId;
@@ -66,10 +66,10 @@ public class Gift {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Date getPosttime() {
+	public Timestamp getPosttime() {
 		return posttime;
 	}
-	public void setPosttime(Date posttime) {
+	public void setPosttime(Timestamp posttime) {
 		this.posttime = posttime;
 	}
 	public int getPriority() {
