@@ -41,4 +41,8 @@ public class GiftController {
 	public static List<Gift> getGiftByUser(int userId){
 		return GiftDAO.getGiftByUid(userId);
 	}
+	
+	public static List<Gift> getLatestGifts(){
+		return GiftDAO.getLatestGifts();
+	}
 }

@@ -1,9 +1,16 @@
-<%if (session.getAttribute("userName") == null){
+<%@ page import="simplegift.model.*,simplegift.controller.*,java.util.*" %>
+<%
+List<Gift> gifts = null;
+if (session.getAttribute("userName") == null){
 	%><script type="text/javascript">
 	alert("Only registered users have access to their own wishlist, please login first.");
 	window.location.replace("/SimpleGift/login.html");
 </script> <%
-}%>
+} else {
+	int userId = Integer.parseInt(session.getAttribute("userId").toString());
+	gifts = GiftController.getGiftByUser(userId);
+}
+%>
 
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
@@ -62,67 +69,42 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td class="col-sm-8 col-md-6">
-											<div class="media">
-												<a class="thumbnail pull-left" href="#"> <img
-													class="media-object"
-													src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png"
-													style="width: 72px; height: 72px;">
-												</a>
-												<div class="media-body">
-													<h4 class="media-heading">
-														<a  id="productname" href="#">Product1 name</a>
-													</h4>
-													<h5 class="media-heading">
-														by <a  id="storeurl" href="#">store url</a>
-													</h5>
-													Description:
-													<span class="text-success"><strong>
-													<a id="description" href="#">this is not an apple</a> </strong></span>
+								<% 
+								if (gifts != null){
+									for (Gift gift : gifts){%>
+										<tr>
+											<td class="col-sm-8 col-md-6">
+												<div class="media">
+													<a class="thumbnail pull-left" href="#"> <img
+														class="media-object"
+														src="<%=gift.getGiftImgURL() %>"
+														style="width: 72px; height: 72px;">
+													</a>
+													<div class="media-body">
+														<h4 class="media-heading">
+															<a  id="productname" href="#"><%=gift.getGiftName() %></a>
+														</h4>
+														<h5 class="media-heading">
+															by <a  id="storeurl" href="#"><%=gift.getStoreURL() %></a>
+														</h5>
+														Description:
+														<span class="text-success"><strong>
+														<a id="description" href="#"><%=gift.getDescription() %></a> </strong></span>
+													</div>
 												</div>
-											</div>
-										</td>
-										<td class="col-sm-1 col-md-1">$<a href="#" id="unitprice">11</a></td>
-										<td class="col-sm-1 col-md-1 text-center"><strong><a href="#" id="desired">10</a></strong></td>
-										<td class="col-sm-1 col-md-1 text-center"><strong><a href="#" id="receuved">3</a></strong></td>
-										<td class="col-sm-1 col-md-1">
-											<button type="button" class="btn btn-danger"
-												data-toggle="modal" data-target="#myModal">
-												<span class="glyphicon glyphicon-remove"></span> Delete
-											</button>
-										</td>
-									</tr>
-									<tr>
-										<td class="col-md-6">
-											<div class="media">
-												<a class="thumbnail pull-left" href="#"> <img
-													class="media-object"
-													src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png"
-													style="width: 72px; height: 72px;">
-												</a>
-												<div class="media-body">
-													<h4 class="media-heading">
-														<a href="#">Product name</a>
-													</h4>
-													<h5 class="media-heading">
-														by <a href="#">store url</a>
-													</h5>
-													<span>Description: </span><span class="text-warning"><strong>I
-															prefer red color</strong></span>
-												</div>
-											</div>
-										</td>
-										<td class="col-sm-1 col-md-1">$120</td>
-										<td class="col-sm-1 col-md-1 text-center"><strong>1</strong></td>
-										<td class="col-sm-1 col-md-1 text-center"><strong>1</strong></td>
-										<td class="col-md-1">
-											<button type="button" class="btn btn-danger"
-												data-toggle="modal" data-target="#myModal">
-												<span class="glyphicon glyphicon-remove"></span> Delete
-											</button>
-										</td>
-									</tr>
+											</td>
+											<td class="col-sm-1 col-md-1">$<a href="#" id="unitprice"><%=gift.getPrice() %></a></td>
+											<td class="col-sm-1 col-md-1 text-center"><strong><a href="#" id="desired"><%=gift.getDesired() %></a></strong></td>
+											<td class="col-sm-1 col-md-1 text-center"><strong><a href="#" id="receuved"><%=gift.getReceived() %></a></strong></td>
+											<td class="col-sm-1 col-md-1">
+												<button type="button" class="btn btn-danger"
+													data-toggle="modal" data-target="#myModal">
+													<span class="glyphicon glyphicon-remove"></span> Delete
+												</button>
+											</td>
+										</tr>
+									<% }
+									}%>
 								</tbody>
 							</table>
 						</div>
@@ -145,6 +127,7 @@
 									</tr>
 								</thead>
 								<tbody>
+								<% %>
 									<tr>
 										<td class="col-sm-6 col-md-6">
 											<div class="media">

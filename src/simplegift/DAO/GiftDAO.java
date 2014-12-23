@@ -94,6 +94,47 @@ public static int addGift(Gift gift){
 		return null;
 	}
 	
+	public static List<Gift> getLatestGifts(){
+		Connection conn = null;
+		try {
+			conn=  DBController.getDBConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("call SELECT_Latest_Gifts()");
+			List<Gift> gifts = new ArrayList<Gift>();
+			while (rs.next()){
+				Gift gift = new Gift();
+				gift.setGiftId(rs.getInt("giftId"));
+				gift.setGiftName(rs.getString("giftName"));
+				gift.setDesired(rs.getInt("desired"));
+				gift.setReceived(rs.getInt("received"));
+				gift.setPrice(rs.getDouble("price"));
+				gift.setStoreURL(rs.getString("storeURL"));
+				gift.setDescription(rs.getString("description"));
+				gift.setPosttime(rs.getDate("posttime"));
+				gift.setPriority(rs.getInt("priority"));
+				gift.setCategory(rs.getString("category"));
+				gift.setUserId(rs.getInt("userId"));
+				gift.setPrivacy(rs.getInt("privacy"));
+				gift.setGiftImgURL(rs.getString("giftImgURL"));
+				gifts.add(gift);
+			}
+			return gifts;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			try {
+				if (conn != null){
+					conn.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
 	public static int updateGift(Gift gift){
 		Connection conn = null;
 		try {
@@ -134,7 +175,7 @@ public static int addGift(Gift gift){
 		try {
 			conn=  DBController.getDBConnection();
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("call SELECT_ContactInfo("+uid+")");
+			ResultSet rs = stmt.executeQuery("call SELECT_GiftList_By_User("+uid+")");
 			List<Gift> list = new ArrayList<Gift>();
 			if (rs.next()){
 				Gift gift = new Gift();

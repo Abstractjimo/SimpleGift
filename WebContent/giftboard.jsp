@@ -19,6 +19,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
 </head>
 <body>
 	<jsp:include page="navigation.jsp" />
@@ -34,6 +35,7 @@
 			interval : 3000
 		})
 	</script>
+	
 
 	<script type="text/x-handlebars-template" id="waterfall-tpl">
 	{{#result}}
@@ -61,7 +63,7 @@
 	    fitWidth: false,
 	    checkImagesLoaded: false,
 	    path: function(page) {
-	        return 'data/data1.json?page=' + page;
+	        return 'data/gifts.json?page=' + page;
 	    }
 	});
 	</script>

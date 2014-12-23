@@ -64,7 +64,6 @@ String path = config.getServletContext().getRealPath("/")+"images/"+gift.getGift
 giftImgURL = "/SimpleGift/images/"+gift.getGiftId()+".png";
 gift.setGiftImgURL(giftImgURL);
 GiftController.modifyGift(gift.getGiftId(), gift);
-%>alert(<%=path%>); <%
 File savedFile = new File(path);
 
 imgItem.write(savedFile);

@@ -2,6 +2,8 @@ package simplegift.test.controller;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import simplegift.controller.GiftController;
@@ -17,4 +19,16 @@ public class GiftControllerTest {
 		GiftController.modifyGift(gift.getGiftId(), gift);
 	}
 
+	@Test
+	public void listTest(){
+		List<Gift> gifts = GiftController.getGiftByUser(4);
+		assert gifts != null;
+		assert gifts.get(0).getGiftId() == 22;
+	}
+	
+	@Test
+	public void latestGiftsTest(){
+		List<Gift> gifts = GiftController.getLatestGifts();
+		System.out.println(gifts.size());
+	}
 }
