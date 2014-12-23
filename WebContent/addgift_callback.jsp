@@ -61,7 +61,7 @@ int userId = Integer.parseInt(session.getAttribute("userId").toString());
 Gift gift = GiftController.addGift(giftName, desired, price, storeURL, description, 0, "default", userId, 0, giftImgURL);
 
 String path = config.getServletContext().getRealPath("/")+"images/"+gift.getGiftId()+".png";
-giftImgURL = "SimpleGift/images/"+gift.getGiftId()+".png";
+giftImgURL = "/SimpleGift/images/"+gift.getGiftId()+".png";
 gift.setGiftImgURL(giftImgURL);
 GiftController.modifyGift(gift.getGiftId(), gift);
 %>alert(<%=path%>); <%
