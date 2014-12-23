@@ -42,7 +42,7 @@
 
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">
-					<input type="text" class="form-control"
+					<input type="text" name ="keyword"  class="form-control"
 						placeholder="Find a Registry by Full Name" style="width: 520px">
 				</div>
 				<button type="submit" class="btn btn-primary">Search</button>
@@ -74,7 +74,7 @@
 						<li><a href="login.html">Log in with Email</a></li>
 						<li><a href="#">Log in with FaceBook</a></li>
 						<li class="divider"></li>
-						<li><a href="#">Sign Up</a></li>
+						<li><a href="signup.html">Sign Up</a></li>
 					</ul>
 				</li>
 					<%
