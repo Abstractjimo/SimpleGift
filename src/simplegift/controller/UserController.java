@@ -25,4 +25,13 @@ public class UserController {
 			return null;
 		}
 	}
+	
+	public static void signUp(String userEmail, String password, String userName, String userImgURL) {
+		User user = new User();
+		user.setUserEmail(userEmail);
+		user.setPassword(password);
+		user.setUserName(userName);
+		user.setUserImgURL(userImgURL);
+		UserDAO.addUser(user);
+	}
 }
