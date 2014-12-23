@@ -14,17 +14,23 @@ import simplegift.model.User;
 
 public class UserDAO {
 
-public static void addUser(User user){
+public static int addUser(User user){
 		
 		Connection conn = null;
 		try {
 			conn = DBController.getDBConnection();
-			PreparedStatement stmt = conn.prepareStatement("call INSERT_User(?,?,?,?)");
+//			String sql = "call INSERT_User(?,?,?,?)";
+			String sql = "insert into User values(null,?,?,?,?)";
+			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, user.getUserEmail());
 			stmt.setString(2, user.getPassword());
 			stmt.setString(3, user.getUserName());
 			stmt.setString(4, user.getUserImgURL());
-			System.out.println(stmt.executeUpdate());
+			stmt.executeUpdate();
+			ResultSet rs = stmt.getGeneratedKeys();
+			if (rs.next()){
+				return rs.getInt(1);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -38,7 +44,7 @@ public static void addUser(User user){
 				e.printStackTrace();
 			}
 		}
-		
+		return -1;
 	}
 
 	public static User getUser(int id){

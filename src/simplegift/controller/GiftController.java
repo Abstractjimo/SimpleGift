@@ -1,6 +1,7 @@
 package simplegift.controller;
 
 import java.sql.Date;
+import java.util.List;
 
 import simplegift.DAO.GiftDAO;
 import simplegift.model.*;
@@ -26,5 +27,18 @@ public class GiftController {
 		int id = GiftDAO.addGift(gift);
 		gift.setGiftId(id);
 		return gift;
+	}
+	
+	public static int modifyGift(int giftId, Gift gift){
+		gift.setGiftId(giftId);
+		return GiftDAO.updateGift(gift);
+	}
+	
+	public static Gift getGift(int giftId){
+		return GiftDAO.getGift(giftId);
+	}
+	
+	public static List<Gift> getGiftByUser(int userId){
+		return GiftDAO.getGiftByUid(userId);
 	}
 }

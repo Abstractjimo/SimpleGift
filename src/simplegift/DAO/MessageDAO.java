@@ -11,17 +11,22 @@ import simplegift.model.*;
 
 public class MessageDAO {
 
-	public static void addMessage(Message message) {
+	public static int addMessage(Message message) {
 
 		Connection conn = null;
 		try {
 			conn = DBController.getDBConnection();
+			String sql = "insert into Message values(null,?,?,?)";
 			PreparedStatement stmt = conn
-					.prepareStatement("call INSERT_Message(?,?,?)");
+					.prepareStatement(sql);
 			stmt.setString(1, message.getContent());
 			stmt.setInt(2, message.getFromUserId());
 			stmt.setInt(3, message.getToUserId());
-			System.out.println(stmt.executeUpdate());
+			stmt.executeUpdate();
+			ResultSet rs = stmt.getGeneratedKeys();
+			if (rs.next()){
+				return rs.getInt(1);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,7 +40,7 @@ public class MessageDAO {
 				e.printStackTrace();
 			}
 		}
-
+		return -1;
 	}
 
 	public static Message getMessage(int id) {

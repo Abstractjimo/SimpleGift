@@ -16,13 +16,18 @@ public class OrderDAO {
 		Connection conn = null;
 		try {
 			conn = DBController.getDBConnection();
+			String sql = "insert into Order values(null,?,?,?,?)";
 			PreparedStatement stmt = conn
-					.prepareStatement("call INSERT_Order(?,?,?,?)");
+					.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, order.getOrderNumber());
 			stmt.setInt(2, order.getContactId());
 			stmt.setInt(3, order.getGiftId());
 			stmt.setInt(4, order.getQuantity());
-			return stmt.executeUpdate();
+			stmt.executeUpdate();
+			ResultSet rs = stmt.getGeneratedKeys();
+			if (rs.next()){
+				return rs.getInt(1);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

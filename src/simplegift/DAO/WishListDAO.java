@@ -13,17 +13,22 @@ import simplegift.model.*;
 
 public class WishListDAO {
 
-	public static void addWishList(WishList wishList) {
+	public static int addWishList(WishList wishList) {
 
 		Connection conn = null;
 		try {
 			conn = DBController.getDBConnection();
+			String sql = "insert into WishList values(null,?,?,?)";
 			PreparedStatement stmt = conn
-					.prepareStatement("call INSERT_WishList(?,?,?)");
+					.prepareStatement(sql);
 			stmt.setString(1, wishList.getListName());
 			stmt.setString(2, wishList.getListURL());
 			stmt.setInt(3, wishList.getUserId());
-			System.out.println(stmt.executeUpdate());
+			stmt.executeUpdate();
+			ResultSet rs = stmt.getGeneratedKeys();
+			if (rs.next()){
+				return rs.getInt(1);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -37,7 +42,7 @@ public class WishListDAO {
 				e.printStackTrace();
 			}
 		}
-
+		return -1;
 	}
 
 	public static WishList getWishList(int id) {
