@@ -90,7 +90,8 @@
 	<script type="text/x-handlebars-template" id="waterfall-tpl">
 	{{#result}}
     <div class="item" style="width:222px">
-        <img src="{{image}}" width="{{width}}" height="{{height}}" />
+
+		<img src="images/shoe.png" alt="product image" width="192">
 		<div class="caption">
 				<h3>Gift name</h3>
 				<p>.this is a food gift you can buy it at some store..</p>
@@ -110,7 +111,7 @@
 	    colWidth: 222,
 	    gutterWidth: 15,
 	    gutterHeight: 15,
-	    fitWidth: false,
+	    fitWidth: true,
 	    checkImagesLoaded: false,
 	    path: function(page) {
 	        return 'data/data1.json?page=' + page;

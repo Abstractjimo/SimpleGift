@@ -22,18 +22,16 @@
 </head>
 <body>
 	<jsp:include page="navigation.jsp" />
-	<div id="container"></div>
+	
+	<div id="container" style="margin-top: 80px"></div>
+	
 	<jsp:include page="footer.jsp" />
+	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.min.js"></script>
-	<script>
-		$('.carousel').carousel({
-			interval : 3000
-		})
-	</script>
 
 	<script type="text/x-handlebars-template" id="waterfall-tpl">
 	{{#result}}
@@ -61,7 +59,7 @@
 	    fitWidth: false,
 	    checkImagesLoaded: false,
 	    path: function(page) {
-	        return 'data/data1.json?page=' + page;
+	        return 'data/data5.json?page=' + page;
 	    }
 	});
 	</script>

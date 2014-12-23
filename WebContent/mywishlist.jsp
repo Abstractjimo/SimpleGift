@@ -1,3 +1,10 @@
+<%if (session.getAttribute("userName") == null){
+	%><script type="text/javascript">
+	alert("Only registered users have access to their own wishlist, please login first.");
+	window.location.replace("/SimpleGift/login.html");
+</script> <%
+}%>
+
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -34,7 +41,6 @@
 					</button>
 					<ul class="dropdown-menu">
 						<li><a data-toggle="tab" href="#dropdown1">Item Gift</a></li>
-						<li><a data-toggle="tab" href="#dropdown2">Cash Gift</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -206,33 +212,38 @@
 								<h4 class="modal-title" id="myModalLabel">Create a new Gift</h4>
 							</div>
 							<div class="modal-body">
-								<form role="form">
+								<form role="form" method="POST" action="addgift_callback.jsp" enctype="multipart/form-data">
 									<div class="form-group">
-										<input type="text" class="form-control" id="giftName"
-											placeholder="Enter GiftName">
+										<input type="text" class="form-control" name="giftName"
+											placeholder="Enter GiftName"/>
 									</div>
 									<div class="form-group">
-										<input type="url" class="form-control" id="giftURL"
-											placeholder="Enter gift URL">
+										<input type="text" class="form-control" name="storeURL"
+											placeholder="Enter gift URL"/>
 									</div>
 									<div class="form-group">
-										<input type="url" class="form-control" id="unitPrice"
-											placeholder="Enter gift price">
+										<input type="text" class="form-control" name="price"
+											placeholder="Enter gift price"/>
 									</div>
 									<div class="form-group">
-										<input type="url" class="form-control" id="giftQuantity"
-											placeholder="Enter gift quantity">
+										<input type="text" class="form-control" name="desired"
+											placeholder="Enter gift quantity"/>
 									</div>
 									<div class="form-group">
-										<label for="giftImage">Upload your gift image</label> <input
-											type="file" id="giftImage">
+										<input type="text" class="form-control" name="description"
+											placeholder="Enter gift description"/>
+									</div>
+									<div class="form-group">
+										<label for="giftImage">Upload your gift image</label> 
+										<input
+											type="file" name="giftImage" accept="image/*"/>
 										<p class="help-block">Upload your gift image</p>
 									</div>
+									<div class="modal-footer">
+										<input type="button" class="btn btn-info" value="cancel"></input>
+										<input type="submit" class="btn btn-primary"></input>
+									</div>
 								</form>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-								<button type="button" class="btn btn-primary">Submit</button>
 							</div>
 						</div>
 					</div>
@@ -248,22 +259,26 @@
 									Gift</h4>
 							</div>
 							<div class="modal-body">
-								<form role="form">
+								<form role="form" method="POST" action="/SimpleGift/addgift_callback.jsp">
 									<div class="form-group">
 										<input type="text" class="form-control" id="giftName"
 											placeholder="Enter GiftName">
 									</div>
 									<div class="form-group">
-										<input type="url" class="form-control" id="giftURL"
+										<input type="text" class="form-control" id="storeURL"
 											placeholder="Enter gift URL">
 									</div>
 									<div class="form-group">
-										<input type="url" class="form-control" id="unitPrice"
+										<input type="text" class="form-control" id="price"
 											placeholder="Enter gift unit price">
 									</div>
 									<div class="form-group">
-										<input type="url" class="form-control" id="giftQuantity"
+										<input type="text" class="form-control" id="desired"
 											placeholder="Enter gift quantity">
+									</div>
+									<div class="form-group">
+										<input type="text" class="form-control" id="description"
+											placeholder="Enter gift description">
 									</div>
 									<div class="form-group">
 										<label for="giftImage">Upload your gift image</label> <input

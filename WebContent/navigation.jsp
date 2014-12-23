@@ -54,7 +54,7 @@
 					%>
 					 <li class="dropdown">
 				<a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-expanded="false"><%=session.getAttribute("userName").toString()%><span class="caret"></span>
+					data-toggle="dropdown" role="button" aria-expanded="false">Welcome <b><%=session.getAttribute("userName").toString()%></b><span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="/SimpleGift/mywishlist.jsp">My Wishlist</a></li>

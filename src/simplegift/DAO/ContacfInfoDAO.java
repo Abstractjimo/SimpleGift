@@ -125,7 +125,41 @@ public class ContacfInfoDAO {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-		
+		}	
 	}
+	
+	public static List<ContactInfo> getContactInfoByKeyword(String keyword){
+		Connection conn = null;
+		try {
+			conn=  DBController.getDBConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM SimpleGift.ContactInfo where contactName like \"%"+keyword+"%\"");
+			List<ContactInfo> list = new ArrayList<ContactInfo>();
+			if (rs.next()){
+				ContactInfo cinfo = new ContactInfo();
+				cinfo.setAddress(rs.getString("address"));
+				cinfo.setContactId(rs.getInt("contactId"));
+				cinfo.setContactName(rs.getString("contactName"));
+				cinfo.setEmail(rs.getString("email"));
+				cinfo.setPhone(rs.getString("phone"));
+				cinfo.setUserId(rs.getInt("userId"));
+				list.add(cinfo);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			try {
+				if (conn != null){
+					conn.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
 }

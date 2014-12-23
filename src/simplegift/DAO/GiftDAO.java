@@ -18,7 +18,9 @@ public static int addGift(Gift gift){
 		Connection conn = null;
 		try {
 			conn = DBController.getDBConnection();
-			PreparedStatement stmt = conn.prepareStatement("call INSERT_Gift(?,?,?,?,?,?,?,?,?,?,?,?)");
+//			String sql = "call INSERT_Gift(?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into Gift values(null,?,?,?,?,?,?,?,?,?,?,?,?)";
+			PreparedStatement stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, gift.getGiftName());
 			stmt.setInt(2, gift.getDesired());
 			stmt.setInt(3, gift.getReceived());
@@ -31,7 +33,11 @@ public static int addGift(Gift gift){
 			stmt.setInt(10, gift.getUserId());
 			stmt.setInt(11, gift.getPrivacy());
 			stmt.setString(12, gift.getGiftImgURL());
-			return stmt.executeUpdate();
+			stmt.executeUpdate();
+			ResultSet rs = stmt.getGeneratedKeys();
+			if (rs.next()){
+				return rs.getInt(1);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -86,6 +92,41 @@ public static int addGift(Gift gift){
 			}
 		}
 		return null;
+	}
+	
+	public static int updateGift(Gift gift){
+		Connection conn = null;
+		try {
+			conn = DBController.getDBConnection();
+			PreparedStatement stmt = conn.prepareStatement("call UPDATE_Gift(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			stmt.setInt(1, gift.getGiftId());
+			stmt.setString(2, gift.getGiftName());
+			stmt.setInt(3, gift.getDesired());
+			stmt.setInt(4, gift.getReceived());
+			stmt.setDouble(5, gift.getPrice());
+			stmt.setString(6, gift.getStoreURL());
+			stmt.setString(7, gift.getDescription());
+			stmt.setDate(8, gift.getPosttime());
+			stmt.setInt(9, gift.getPriority());
+			stmt.setString(10, gift.getCategory());
+			stmt.setInt(11, gift.getUserId());
+			stmt.setInt(12, gift.getPrivacy());
+			stmt.setString(13, gift.getGiftImgURL());
+			return stmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			try {
+				if (conn != null){
+					conn.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return -1;
 	}
 	
 	public static List<Gift> getGiftByUid(int uid){
