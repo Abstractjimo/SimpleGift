@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ page import= "java.util.List, simplegift.model.ContactInfo, simplegift.controller.*" %> 
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Search Result</title>
+<title>Registry</title>
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -17,7 +18,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+        
 <style type="text/css">
 .row {
 	margin-top: 40px;
@@ -43,8 +44,15 @@
 </style>
 </head>
 <body>
+
 <jsp:include page="navigation.jsp" />
+
 <div class="container" style="margin-top: 80px">
+	<%  
+		String keyword = request.getParameter("keyword");
+		List<ContactInfo> result = ContactInfoController.getContactInfoByKeyword(keyword);
+		System.out.println(result.size());
+	%>
     <h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>
     	<div class="row">
 				<div class="panel panel-primary">
@@ -70,38 +78,29 @@
 							</tr>
 						</thead>
 						<tbody>
+						
+							<%
+								for(int i = 0; i < result.size(); ++i) {
+									ContactInfo cInfo = result.get(i);
+							%>
 							<tr>
-								<td>Kilgore</td>
-								<td>1823 w6, Brooklyn, NewYork</td>
-								<td>kkkk@nyu.edu</td>
-								<td><a href="#">mysigma.nuy.com</a></td>
+								<td><%=cInfo.getContactName() %></td>
+								<td><%=cInfo.getAddress() %></td>
+								<td><%=cInfo.getEmail()%></td>
+								<td><a href="myregistry.jsp?userId=<%=cInfo.getUserId()%>"> Go </a></td>
 							</tr>
-							<tr>
-								<td>Bob</td>
-								<td>1111 5th avenue, Manhattan, NewYork </td>
-								<td>BobBobBob@Bob.com</td>
-								<td><a href="#">Bob.mywish.com</a></td>
-							</tr>
-							<tr>
-								<td>Holden</td>
-								<td>098 5th avenue, city, Miami</td>
-								<td>qwe123@123.com</td>
-								<td><a href="#">www.google.com</a></td>
-							</tr>
-							<tr>
-								<td>Song Ge</td>
-								<td>098 5th avenue, city, Miami</td>
-								<td>qwe123@123.com</td>
-								<td><a href="#">www.facebook.com</a></td>
-							</tr>
+							<%} 								
+							%>
+							
 						</tbody>
 					</table>
 				</div>
 		</div>
 	</div>
+	
+	<jsp:include page="footer.jsp" />
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/filter.js"></script>

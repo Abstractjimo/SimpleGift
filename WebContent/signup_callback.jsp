@@ -10,8 +10,7 @@ String contactName = firstName + " " + lastName;
 String loginEmail = request.getParameter("youremail");
 String password = request.getParameter("password");
 String userName = request.getParameter("yourusername");
-UserController.signUp(loginEmail, password, userName, "");
-User user = UserDAO.getUserByEmail(loginEmail);
+User user = UserController.signUp(loginEmail, password, userName, "");
 System.out.println(contactName + "-" + loginEmail + "-" + password );
 System.out.println(userName);
 if (user == null){

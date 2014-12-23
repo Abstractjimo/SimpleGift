@@ -19,6 +19,7 @@
     
 <style>
 .jumbotron {
+  color: white;
   text-shadow: #444 0 1px 1px;
   text-align: center;
   background: url('images/jumbotron.jpeg') no-repeat;

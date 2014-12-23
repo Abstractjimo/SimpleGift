@@ -26,12 +26,13 @@ public class UserController {
 		}
 	}
 	
-	public static void signUp(String userEmail, String password, String userName, String userImgURL) {
+	public static User signUp(String userEmail, String password, String userName, String userImgURL) {
 		User user = new User();
 		user.setUserEmail(userEmail);
 		user.setPassword(password);
 		user.setUserName(userName);
 		user.setUserImgURL(userImgURL);
-		UserDAO.addUser(user);
+		user.setUserId(UserDAO.addUser(user));
+		return user;
 	}
 }

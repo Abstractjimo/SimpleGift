@@ -40,10 +40,10 @@
 				<li><a href="friendcircle.jsp">Friend Circle </a></li>
 			</ul>
 
-			<form class="navbar-form navbar-left" role="search">
+			<form class="navbar-form navbar-left" role="search" method="GET" action="search.jsp">
 				<div class="form-group">
-					<input type="text" class="form-control"
-						placeholder="Find a Registry by Full Name" style="width: 520px">
+					<input type="text" name ="keyword"  class="form-control"
+						placeholder="Find a Registry by Full Name" style="width: 520px" required/>
 				</div>
 				<button type="submit" class="btn btn-primary">Search</button>
 			</form>
@@ -74,7 +74,7 @@
 						<li><a href="login.html">Log in with Email</a></li>
 						<li><a href="#">Log in with FaceBook</a></li>
 						<li class="divider"></li>
-						<li><a href="#">Sign Up</a></li>
+						<li><a href="signup.html">Sign Up</a></li>
 					</ul>
 				</li>
 					<%
