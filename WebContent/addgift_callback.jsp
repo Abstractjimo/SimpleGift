@@ -17,13 +17,11 @@ String storeURL = "";
 String description = "";
 
 String contentType = request.getContentType();
-System.out.println(contentType);
 String giftImgURL = "";
 String itemName = "";
 FileItem imgItem = null;
 String savePath = config.getServletContext().getRealPath("/")+"images/"+itemName+".png";
 if (contentType != null && contentType.indexOf("multipart/form-data") >= 0){
-	System.out.println("I'm here!!!");
 	FileItemFactory factory = new DiskFileItemFactory();
 	ServletFileUpload upload = new ServletFileUpload(factory);
 	
@@ -34,7 +32,6 @@ if (contentType != null && contentType.indexOf("multipart/form-data") >= 0){
 		if (item.isFormField()){
 			String name = item.getFieldName();
 			String value = item.getString();
-			System.out.println(name + "   " + value);
 			if(name.equals("giftName"))
 			{
 				giftName = value;
@@ -63,11 +60,10 @@ if (contentType != null && contentType.indexOf("multipart/form-data") >= 0){
 int userId = Integer.parseInt(session.getAttribute("userId").toString());
 Gift gift = GiftController.addGift(giftName, desired, price, storeURL, description, 0, "default", userId, 0, giftImgURL);
 
-String path = config.getServletContext().getRealPath("/")+"images/"+gift.getGiftId();
-giftImgURL = path;
+String path = config.getServletContext().getRealPath("/")+"images/"+gift.getGiftId()+".png";
+giftImgURL = "/SimpleGift/images/"+gift.getGiftId()+".png";
 gift.setGiftImgURL(giftImgURL);
 GiftController.modifyGift(gift.getGiftId(), gift);
-System.out.println(giftImgURL);
 %>alert(<%=path%>); <%
 File savedFile = new File(path);
 
