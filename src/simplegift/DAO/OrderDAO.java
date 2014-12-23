@@ -80,13 +80,13 @@ public class OrderDAO {
 		Connection conn = null;
 		try {
 			conn = DBController.getDBConnection();
-			String sql = "select * from ContactInfo JOIN Order JOIN Gift where userId=?";
+			String sql = "select Gift.giftId, giftName, desired, received, price, storeURL, description, posttime, priority, category, Gift.userId, privacy, giftImgURL, orderId, orderNumber, ContactInfo.contactId,quantity,contactName,address,email,phone from Gift, `Order`,ContactInfo where Gift.userId=? and `Order`.giftId=Gift.giftId and `Order`.contactId=ContactInfo.contactId";
 			PreparedStatement stmt = conn
 					.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1, userId);
 			ResultSet rs = stmt.executeQuery();
 			List<GiftOrder> list = new ArrayList<GiftOrder>();
-			if (rs.next()) {
+			while (rs.next()) {
 				GiftOrder giftOrder = new GiftOrder();
 				giftOrder.setOrderId(rs.getInt("giftId"));;
 				giftOrder.setOrderNumber(rs.getString("orderNumber"));;
@@ -108,7 +108,7 @@ public class OrderDAO {
 				giftOrder.setPosttime(rs.getDate("posttime"));
 				giftOrder.setPriority(rs.getInt("priority"));
 				giftOrder.setCategory(rs.getString("category"));
-				giftOrder.setUserId(rs.getInt(userId));
+				giftOrder.setUserId(userId);
 				giftOrder.setPrivacy(rs.getInt("privacy"));
 				giftOrder.setGiftImgURL(rs.getString("giftImgURL"));
 				

@@ -1,6 +1,7 @@
 <%@ page import="simplegift.model.*,simplegift.controller.*,java.util.*" %>
 <%
 List<Gift> gifts = null;
+List<GiftOrder> giftOrders = null;
 if (session.getAttribute("userName") == null){
 	%><script type="text/javascript">
 	alert("Only registered users have access to their own wishlist, please login first.");
@@ -9,6 +10,7 @@ if (session.getAttribute("userName") == null){
 } else {
 	int userId = Integer.parseInt(session.getAttribute("userId").toString());
 	gifts = GiftController.getGiftByUser(userId);
+	giftOrders = OrderController.getGiftOrderByUser(userId);
 }
 %>
 
@@ -122,63 +124,42 @@ if (session.getAttribute("userName") == null){
 										<th>Gift</th>
 										<th>price</th>
 										<th class="text-center">received</th>
-										<th class="text-center">time</th>
+										<th class="text-center">order number</th>
 										<th>Purchaser</th>
 									</tr>
 								</thead>
 								<tbody>
-								<% %>
-									<tr>
+								<%
+								if (giftOrders != null){
+									for (GiftOrder giftOrder : giftOrders){
+									%>
+										<tr>
 										<td class="col-sm-6 col-md-6">
 											<div class="media">
 												<a class="thumbnail pull-left" href="#"> <img
 													class="media-object"
-													src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png"
+													src="<%=giftOrder.getGiftImgURL() %>"
 													style="width: 72px; height: 72px;">
 												</a>
 												<div class="media-body">
 													<h4 class="media-heading">
-														<a href="#">Product name</a>
+														<a href="#"><%=giftOrder.getGiftName() %></a>
 													</h4>
 													<h5 class="media-heading">
-														by <a href="#">store url</a>
+														by <a href="#"><%=giftOrder.getStoreURL() %></a>
 													</h5>
-													<span>Some description: </span><span class="text-success"><strong>this
-															is an apple </strong></span>
+													<span>Some description: </span><span class="text-success"><strong><%=giftOrder.getDescription() %></strong></span>
 												</div>
 											</div>
 										</td>
-										<td class="col-sm-1 col-md-1">$10</td>
-										<td class="col-sm-1 col-md-1 text-center"><strong>10</strong></td>
-										<td class="col-sm-3 col-md-3 text-center"><strong>2014/12/23</strong></td>
-										<td class="col-sm-1 col-md-1"><strong>pyq</strong></td>
+										<td class="col-sm-1 col-md-1"><%=giftOrder.getPrice() %></td>
+										<td class="col-sm-1 col-md-1 text-center"><strong><%=giftOrder.getDesired() %></strong></td>
+										<td class="col-sm-3 col-md-3 text-center"><strong><%=giftOrder.getOrderNumber() %></strong></td>
+										<td class="col-sm-1 col-md-1"><strong><%=giftOrder.getContactName() %></strong></td>
 									</tr>
-									<tr>
-										<td class="col-md-6">
-											<div class="media">
-												<a class="thumbnail pull-left" href="#"> <img
-													class="media-object"
-													src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png"
-													style="width: 72px; height: 72px;">
-												</a>
-												<div class="media-body">
-													<h4 class="media-heading">
-														<a href="#">Product name</a>
-													</h4>
-													<h5 class="media-heading">
-														by <a href="#">store url</a>
-													</h5>
-													<span>Description: </span><span class="text-warning"><strong>I
-															prefer red color</strong></span>
-												</div>
-											</div>
-										</td>
-										<td class="col-sm-1 col-md-1">$10</td>
-										<td class="col-sm-1 col-md-1 text-center"><strong>1</strong></td>
-										<td class="col-sm-3 col-md-3 text-center"><strong>2014/12/19</strong></td>
-										<td class="col-sm-1 col-md-1"><strong>Huansong
-												Wang</strong></td>
-									</tr>
+									<%}
+								}
+								%>
 								</tbody>
 							</table>
 						</div>

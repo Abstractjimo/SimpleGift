@@ -1,5 +1,7 @@
 package simplegift.controller;
 
+import java.util.List;
+
 import simplegift.DAO.GiftDAO;
 import simplegift.DAO.OrderDAO;
 import simplegift.model.*;
@@ -18,5 +20,10 @@ public class OrderController {
 		gift.setReceived(gift.getReceived() + quantity);
 		GiftDAO.updateGift(gift);
 		return order;
+	}
+	
+	public static List<GiftOrder> getGiftOrderByUser(int userId){
+		List<GiftOrder> list = OrderDAO.getGiftOrder(userId);
+		return list;
 	}
 }
