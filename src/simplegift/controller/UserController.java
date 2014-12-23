@@ -1,5 +1,8 @@
 package simplegift.controller;
 
+import java.util.List;
+
+import simplegift.DAO.ContacfInfoDAO;
 import simplegift.DAO.UserDAO;
 import simplegift.model.*;
 
@@ -34,5 +37,17 @@ public class UserController {
 		user.setUserImgURL(userImgURL);
 		user.setUserId(UserDAO.addUser(user));
 		return user;
+	}
+	
+	public static User getUser(int id){
+		return UserDAO.getUser(id);
+	}
+	
+	public static ContactInfo getUserContact(int id){
+		List<ContactInfo> contacts = ContacfInfoDAO.getContactInfoByUid(id);
+		if (contacts.size() > 0){
+			return contacts.get(0);
+		}
+		return null;
 	}
 }

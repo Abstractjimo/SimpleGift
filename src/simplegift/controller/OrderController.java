@@ -1,5 +1,6 @@
 package simplegift.controller;
 
+import simplegift.DAO.GiftDAO;
 import simplegift.DAO.OrderDAO;
 import simplegift.model.*;
 
@@ -13,6 +14,9 @@ public class OrderController {
 		order.setQuantity(quantity);
 		int id = OrderDAO.addOrder(order);
 		order.setGiftId(id);
+		Gift gift = GiftDAO.getGift(giftId);
+		gift.setReceived(gift.getReceived() + quantity);
+		GiftDAO.updateGift(gift);
 		return order;
 	}
 }

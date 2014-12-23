@@ -18,9 +18,8 @@ public class OrderDAO {
 		Connection conn = null;
 		try {
 			conn = DBController.getDBConnection();
-			String sql = "insert into Order values(null,?,?,?,?)";
-			PreparedStatement stmt = conn
-					.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+			String sql = "insert into `Order` values(null,?,?,?,?)";
+			PreparedStatement stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, order.getOrderNumber());
 			stmt.setInt(2, order.getContactId());
 			stmt.setInt(3, order.getGiftId());

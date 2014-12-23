@@ -1,3 +1,20 @@
+<%@ page import="simplegift.controller.*,simplegift.model.*,java.util.*" %>
+<%
+int userId = 0;
+User user = null;
+ContactInfo contactInfo = null;
+List<Gift> gifts = null;
+int giftId = 0;
+if (request.getParameter("userId") != null){
+	userId = Integer.parseInt(request.getParameter("userId"));
+	user = UserController.getUser(userId);
+	contactInfo = UserController.getUserContact(userId);
+	gifts = GiftController.getGiftByUser(userId);
+} else {
+    response.sendRedirect("/SimpleGift/");
+}
+
+%>
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -20,7 +37,9 @@
 <body>
 <jsp:include page="navigation.jsp" />
 	<div class="container" style="margin-top: 80px">
-		<h2>Welcome to xxx gift registry</h2>
+		<%if (user != null){ %>
+		<h2>Welcome to <b><%=user.getUserName() %>'s</b> gift registry</h2>
+		<%} %>
 		<div class="row">
 			<div class="col-sm-12 col-md-10 col-md-offset-1">
 				<table class="table table-hover">
@@ -34,66 +53,45 @@
 						</tr>
 					</thead>
 					<tbody>
+					<%if (gifts != null){
+						for (Gift gift : gifts){
+							if (gift.getDesired() <= gift.getReceived()){
+								continue;
+							}
+						%>
 						<tr>
 							<td class="col-sm-8 col-md-6">
 								<div class="media">
 									<a class="thumbnail pull-left" href="#"> <img
 										class="media-object"
-										src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png"
+										src="<%=gift.getGiftImgURL() %>"
 										style="width: 72px; height: 72px;">
 									</a>
 									<div class="media-body">
 										<h4 class="media-heading">
-											<a href="#">Product name</a>
+											<a href="#"><%=gift.getGiftName() %></a>
 										</h4>
 										<h5 class="media-heading">
-											by <a href="#">store url</a>
+											by <a href="#"><%=gift.getStoreURL() %></a>
 										</h5>
-										<span>Some description: </span><span class="text-success"><strong>this
-												is an apple </strong></span>
+										<span>Some description: </span><span class="text-success"><strong><%=gift.getDescription() %></strong></span>
 									</div>
 								</div>
 							</td>
-							<td class="col-sm-1 col-md-1">$10</td>
-							<td class="col-sm-1 col-md-1 text-center"><strong>10</strong></td>
-							<td class="col-sm-1 col-md-1 text-center"><strong>3</strong></td>
+							<td class="col-sm-1 col-md-1"><%=gift.getPrice() %></td>
+							<td class="col-sm-1 col-md-1 text-center"><strong><%=gift.getDesired() %></strong></td>
+							<td class="col-sm-1 col-md-1 text-center"><strong><%=gift.getReceived() %></strong></td>
 							<td class="col-sm-1 col-md-1">
 								<button type="button" class="btn btn-success"
-									data-toggle="modal" data-target="#myModal">
+									data-toggle="modal" data-target="#myModal" onclick="<%giftId = gift.getGiftId(); %>">
 									<span class="glyphicon glyphicon-shopping-cart"></span> Buy
 								</button>
 							</td>
-						</tr>
-						<tr>
-							<td class="col-md-6">
-								<div class="media">
-									<a class="thumbnail pull-left" href="#"> <img
-										class="media-object"
-										src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png"
-										style="width: 72px; height: 72px;">
-									</a>
-									<div class="media-body">
-										<h4 class="media-heading">
-											<a href="#">Product name</a>
-										</h4>
-										<h5 class="media-heading">
-											by <a href="#">store url</a>
-										</h5>
-										<span>Description: </span><span class="text-warning"><strong>I
-												prefer red color</strong></span>
-									</div>
-								</div>
-							</td>
-							<td class="col-sm-1 col-md-1">$120</td>
-							<td class="col-sm-1 col-md-1 text-center"><strong>1</strong></td>
-							<td class="col-sm-1 col-md-1 text-center"><strong>1</strong></td>
-							<td class="col-md-1">
-								<button type="button" class="btn btn-success"
-									data-toggle="modal" data-target="#myModal">
-									<span class="glyphicon glyphicon-shopping-cart"></span> Buy
-								</button>
-							</td>
-						</tr>
+						</tr>	
+						<%}
+					}%>
+						
+
 					</tbody>
 				</table>
 			</div>
@@ -110,29 +108,34 @@
 						</button>
 						<h2 class="modal-title" id="myModalLabel">Buy Buy Buy</h2>
 					</div>
+					<form method="POST" action="ordergift_callback.jsp" encrypt="multipart/mix">
 					<div class="modal-body">
 						<h4>Receiver Address</h4>
-						<p>PYQ w6th brooklyn New York, 11223</p>
+						<%if (contactInfo != null){ %>
+						<p><%=contactInfo.getAddress() %></p>
+						<%} %>
 						<hr>
 						<p>
-							I have bought &nbsp<input class="input-xs" type="text" value="1">
+							I have bought &nbsp<input class="input-xs" type="text" name="quantity" value="1">
 							of this item
 						</p>
-						<p>Order Number :&nbsp<input class="form-control" type="text" placeholder="input order number"></p>
+						<p>Order Number :&nbsp<input class="form-control" type="text" name="orderNumber" placeholder="input order number"></p>
 
 						<hr>
 						<h4>Your Contact Information</h4>
-						<p><input class="form-control" name="yourname"
+						<p><input class="form-control" name="contactName"
 						placeholder="Your Full Name" type="text" /></p>
 						<p>
-							<textarea class="form-control" rows="3" name="youraddress" placeholder="Your Contact Address"></textarea>
+							<input class="form-control" rows="3" name="address" placeholder="Your Contact Address"></textarea>
 						</p>
 					</div>
 					<div class="modal-footer">
+						<input type="hidden" value="<%=userId %>" name="userId"/>
+						<input type="hidden" value="<%=giftId %>" name="giftId"/>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Finish gift
-							buy</button>
+						<input type="submit" class="btn btn-primary"></input>
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>
