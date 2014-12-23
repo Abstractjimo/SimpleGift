@@ -177,7 +177,7 @@ public static int addGift(Gift gift){
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("call SELECT_GiftList_By_User("+uid+")");
 			List<Gift> list = new ArrayList<Gift>();
-			if (rs.next()){
+			while (rs.next()){
 				Gift gift = new Gift();
 				gift.setGiftId(rs.getInt("giftId"));
 				gift.setGiftName(rs.getString("giftName"));
